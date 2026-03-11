@@ -41,7 +41,12 @@ docker-compose up -d
 docker-compose ps
 ```
 
-### 4 Отправить тестовый запрос
+### 5 Установить зависимости
+```bash
+docker-compose exec php composer install
+```
+
+### 6 Отправить тестовый запрос
 ```bash
 curl -X POST http://localhost:8080/api/logs/ingest \
   -H "Content-Type: application/json" \
