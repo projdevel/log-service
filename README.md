@@ -118,8 +118,17 @@ logs.ingest     4
 ```bash
 docker-compose exec php php bin/phpunit
 ```
+### Юнит тест
+```bash
+docker-compose exec php php bin/phpunit tests/Unit/Service/LogValidatorTest.php
+```
 
-Остановка контейнеров
+### Интеграционный тест
+```bash
+docker-compose exec php php bin/phpunit tests/Integration/Controller/LogIngestionControllerTest.php 
+```
+
+### Остановка контейнеров
 ```bash
 docker-compose down
 ```

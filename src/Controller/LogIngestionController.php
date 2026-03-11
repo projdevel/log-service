@@ -18,22 +18,12 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class LogIngestionController extends AbstractController
 {
-    private LogValidator $validator;
-    private BatchIdGenerator $batchIdGenerator;
-    private MessageBusInterface $messageBus;
-    private LoggerInterface $logger;
-
     public function __construct(
-        LogValidator $validator,
-        BatchIdGenerator $batchIdGenerator,
-        MessageBusInterface $messageBus,
-        LoggerInterface $logger
-    ) {
-        $this->validator = $validator;
-        $this->batchIdGenerator = $batchIdGenerator;
-        $this->messageBus = $messageBus;
-        $this->logger = $logger;
-    }
+        private readonly LogValidator $validator,
+        private readonly BatchIdGenerator $batchIdGenerator,
+        private readonly MessageBusInterface $messageBus,
+        private readonly LoggerInterface $logger
+    ) {}
 
     #[Route('/api/logs/ingest', name: 'api_logs_ingest', methods: ['POST'])]
     public function ingest(Request $request): JsonResponse
@@ -56,22 +46,6 @@ class LogIngestionController extends AbstractController
                 return $this->json([
                     'status' => 'error',
                     'message' => 'Field "logs" is required'
-                ], Response::HTTP_BAD_REQUEST);
-            }
-
-            if (empty($data['logs'])) {
-                $this->logger->error('Empty logs array');
-                return $this->json([
-                    'status' => 'error',
-                    'message' => 'Logs array cannot be empty'
-                ], Response::HTTP_BAD_REQUEST);
-            }
-
-            if (count($data['logs']) > 1000) {
-                $this->logger->error('Batch size exceeded', ['count' => count($data['logs'])]);
-                return $this->json([
-                    'status' => 'error',
-                    'message' => 'Maximum 1000 logs per batch'
                 ], Response::HTTP_BAD_REQUEST);
             }
 

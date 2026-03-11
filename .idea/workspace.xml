@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="290ceffa-4c7b-48bc-9e9a-e614f94b4ffe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/messenger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/messenger.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/reference.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/reference.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.dist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.dist.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LogIngestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LogIngestionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/LogValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/LogValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Integration/Controller/LogIngestionControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/Controller/LogIngestionControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +137,11 @@
       <updated>1773151178041</updated>
       <workItem from="1773151179122" duration="9178000" />
       <workItem from="1773169059220" duration="6305000" />
-      <workItem from="1773220322427" duration="9807000" />
+      <workItem from="1773220322427" duration="10770000" />
+      <workItem from="1773240498245" duration="17000" />
+      <workItem from="1773240525184" duration="147000" />
+      <workItem from="1773240826961" duration="2587000" />
+      <workItem from="1773262240250" duration="2991000" />
     </task>
     <servers />
   </component>
