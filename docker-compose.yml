@@ -6,21 +6,29 @@ services:
             context: .
             dockerfile: Dockerfile
         container_name: log-service-php
+        restart: unless-stopped
         volumes:
             - ./:/var/www/html
         environment:
-            - APP_ENV=dev
-            - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+            - APP_ENV=${APP_ENV:-dev}
+            - APP_SECRET=${APP_SECRET:-your_secret_key}
+            - RABBITMQ_HOST=rabbitmq
+            - RABBITMQ_PORT=5672
+            - RABBITMQ_USER=${RABBITMQ_USER:-guest}
+            - RABBITMQ_PASS=${RABBITMQ_PASS:-guest}
+            - MESSENGER_TRANSPORT_DSN=amqp://${RABBITMQ_USER:-guest}:${RABBITMQ_PASS:-guest}@rabbitmq:5672/%2f/logs.ingest
         depends_on:
-            - rabbitmq
+            rabbitmq:
+                condition: service_healthy
         networks:
             - log-network
 
     nginx:
         image: nginx:alpine
         container_name: log-service-nginx
+        restart: unless-stopped
         ports:
-            - "8080:80"
+            - "${NGINX_PORT:-8080}:80"
         volumes:
             - ./:/var/www/html
             - ./docker/nginx/conf.d:/etc/nginx/conf.d
@@ -30,16 +38,22 @@ services:
             - log-network
 
     rabbitmq:
-        image: rabbitmq:3.11-management-alpine
+        image: rabbitmq:3.12-management-alpine
         container_name: log-service-rabbitmq
+        restart: unless-stopped
         ports:
-            - "5672:5672"
-            - "15672:15672"
+            - "${RABBITMQ_PORT:-5672}:5672"
+            - "${RABBITMQ_MANAGEMENT_PORT:-15672}:15672"
         environment:
-            - RABBITMQ_DEFAULT_USER=guest
-            - RABBITMQ_DEFAULT_PASS=guest
+            - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER:-guest}
+            - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS:-guest}
         volumes:
             - rabbitmq_data:/var/lib/rabbitmq
+        healthcheck:
+            test: ["CMD", "rabbitmq-diagnostics", "ping"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
         networks:
             - log-network
 

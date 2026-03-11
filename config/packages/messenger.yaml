@@ -1,8 +1,6 @@
 framework:
     messenger:
         transports:
-            rabbitmq:
-                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
-
+            rabbitmq: '%env(MESSENGER_TRANSPORT_DSN)%'
         routing:
             'App\Message\LogMessage': rabbitmq

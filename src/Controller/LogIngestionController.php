@@ -134,22 +134,18 @@ class LogIngestionController extends AbstractController
 
             return $this->json([
                 'status' => 'error',
-                'message' => 'Message broker unavailable',
-                'debug' => $_ENV['APP_ENV'] === 'dev' ? $e->getMessage() : null
-            ], Response::HTTP_SERVICE_UNAVAILABLE);
+                'message' => 'Message broker unavailable'
+            ], $_ENV['APP_ENV'] === 'dev' ? Response::HTTP_SERVICE_UNAVAILABLE : Response::HTTP_INTERNAL_SERVER_ERROR);
 
         } catch (\Exception $e) {
             $this->logger->error('Unexpected error', [
                 'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine()
+                'trace' => $e->getTraceAsString()
             ]);
 
             return $this->json([
                 'status' => 'error',
                 'message' => 'Internal server error',
-                'debug' => $_ENV['APP_ENV'] === 'dev' ? $e->getMessage() : null
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
