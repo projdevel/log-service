@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: log-service-php
+        volumes:
+            - ./:/var/www/html
+        environment:
+            - APP_ENV=dev
+            - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+        depends_on:
+            - rabbitmq
+        networks:
+            - log-network
+
+    nginx:
+        image: nginx:alpine
+        container_name: log-service-nginx
+        ports:
+            - "8080:80"
+        volumes:
+            - ./:/var/www/html
+            - ./docker/nginx/conf.d:/etc/nginx/conf.d
+        depends_on:
+            - php
+        networks:
+            - log-network
+
+    rabbitmq:
+        image: rabbitmq:3.11-management-alpine
+        container_name: log-service-rabbitmq
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        environment:
+            - RABBITMQ_DEFAULT_USER=guest
+            - RABBITMQ_DEFAULT_PASS=guest
+        volumes:
+            - rabbitmq_data:/var/lib/rabbitmq
+        networks:
+            - log-network
+
+networks:
+    log-network:
+        driver: bridge
+
+volumes:
+    rabbitmq_data:
