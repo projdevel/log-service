@@ -7,10 +7,8 @@
     <list default="true" id="290ceffa-4c7b-48bc-9e9a-e614f94b4ffe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/test/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/test/framework.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phpunit.dist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.dist.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/LogIngestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LogIngestionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/LogValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/LogValidator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Integration/Controller/LogIngestionControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/Controller/LogIngestionControllerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
     </list>
@@ -141,7 +139,7 @@
       <workItem from="1773240498245" duration="17000" />
       <workItem from="1773240525184" duration="147000" />
       <workItem from="1773240826961" duration="2587000" />
-      <workItem from="1773262240250" duration="2991000" />
+      <workItem from="1773262240250" duration="7418000" />
     </task>
     <servers />
   </component>
