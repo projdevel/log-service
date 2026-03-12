@@ -44,6 +44,9 @@ docker-compose ps
 ### 5 Установить зависимости
 ```bash
 mkdir vendor/ && chmod 777 vendor/   <- костыль, но для тестового пойдет
+// Че то у меня ночью не получается докер без этого костыля, еще эта директория :(
+mkdir var/ && chmod 777 var/   <- костыль, но для тестового пойдет
+
 docker-compose exec php composer install
 ```
 
